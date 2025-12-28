@@ -1,0 +1,52 @@
+[2025-12-28 15:49:42] System Started.
+[2025-12-28 15:52:14] New student registered: zeynep can (ID: 211015060)
+[2025-12-28 15:52:46] New student registered: Büşra Nur Akçay (ID: 211015061)
+[2025-12-28 15:53:07] New student registered: elif end (ID: 123456)
+[2025-12-28 15:53:25] Course added: java
+[2025-12-28 15:53:38] Grades recorded for: zeynep can
+[2025-12-28 15:53:49] Grades recorded for: Büşra Nur Akçay
+[2025-12-28 15:53:58] Grades recorded for: elif end
+[2025-12-28 15:53:58] Report saved successfully to results.txt
+[2025-12-28 15:53:58] System Terminated.
+[2025-12-28 17:30:06] System Started.
+[2025-12-28 17:30:06] Persistence: Loaded 3 records from previous run.
+[2025-12-28 17:42:28] System Started.
+[2025-12-28 17:42:28] Persistence: Loaded 3 records from previous run.
+[2025-12-28 17:45:37] System Started.
+[2025-12-28 17:45:37] Persistence: Loaded 3 records from previous run.
+[2025-12-28 18:00:39] System Started.
+[2025-12-28 18:00:39] Persistence: Loaded 3 records from previous run.
+[2025-12-28 18:07:38] System Started.
+[2025-12-28 18:07:38] Persistence: Loaded 3 records from previous run.
+[2025-12-28 18:10:42] Department set: fizik
+[2025-12-28 18:11:55] Student added: ID 145
+[2025-12-28 18:12:41] Course added: m12
+[2025-12-28 18:15:40] Report saved successfully to results.txt
+[2025-12-28 18:15:40] System Terminated.
+[2025-12-28 22:56:04] System Started.
+[2025-12-28 22:56:04] Persistence: Loaded 0 records from previous run.
+[2025-12-28 22:57:03] Department set: kimya
+[2025-12-28 23:05:22] System Started.
+[2025-12-28 23:05:22] Persistence: Loaded 0 records from previous run.
+[2025-12-28 23:05:38] Department set: Kimya
+[2025-12-28 23:14:01] System Started.
+[2025-12-28 23:14:01] Persistence: Loaded 0 records from previous run.
+[2025-12-28 23:14:15] Department set: kimya
+[2025-12-28 23:14:57] Student added: ID 1234
+[2025-12-28 23:15:29] Student added: ID 123456
+[2025-12-28 23:15:59] Course added: km123
+[2025-12-28 23:16:29] Course added: Go425
+[2025-12-28 23:16:40] Course added: Tr81
+[2025-12-28 23:17:37] Grade skipped for student 1234, course Go425
+[2025-12-28 23:18:23] Full report saved successfully to results.txt
+[2025-12-28 23:18:23] System Terminated.
+[2025-12-28 23:20:46] System Started.
+[2025-12-28 23:20:46] Persistence: Loaded 2 records from previous run.
+[2025-12-28 23:21:29] Department set: Elektirik
+[2025-12-28 23:22:07] Student added: ID 12345
+[2025-12-28 23:22:44] Course added: mt56
+[2025-12-28 23:23:10] Grade skipped for student 1234, course mt56
+[2025-12-28 23:23:16] Full report saved successfully to results.txt
+[2025-12-28 23:23:16] System Terminated.
+[2025-12-28 23:38:20] System Started.
+[2025-12-28 23:38:20] Persistence: Loaded 3 records from previous run.
