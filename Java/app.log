@@ -50,3 +50,41 @@
 [2025-12-28 23:23:16] System Terminated.
 [2025-12-28 23:38:20] System Started.
 [2025-12-28 23:38:20] Persistence: Loaded 3 records from previous run.
+[2025-12-29 00:26:49] System Started.
+[2025-12-29 00:27:48] Department set: matematik
+[2025-12-29 00:28:22] Student added: ID 123456
+[2025-12-29 00:28:54] Student added: ID 7458
+[2025-12-29 00:29:30] Course added: Geo14
+[2025-12-29 00:29:44] Course added: o84
+[2025-12-29 00:30:12] System Terminated.
+[2025-12-29 00:32:46] System Started.
+[2025-12-29 00:33:02] Department set: matematik
+[2025-12-29 00:33:16] Student added: ID 1234
+[2025-12-29 00:33:33] Course added: Geo123
+[2025-12-29 00:33:43] System Terminated.
+[2025-12-29 00:34:09] System Started.
+[2025-12-29 00:34:25] Department set: Fizik
+[2025-12-29 00:34:42] Student added: ID 1478
+[2025-12-29 00:35:01] Course added: mt14
+[2025-12-29 00:35:05] System Terminated.
+[2025-12-29 00:36:15] System Started.
+[2025-12-29 00:36:39] Department set: m
+[2025-12-29 00:36:50] Student added: ID 1
+[2025-12-29 00:36:59] Course added: r
+[2025-12-29 00:37:05] System Terminated.
+[2025-12-29 00:39:47] System Started.
+[2025-12-29 00:40:02] Department set: be
+[2025-12-29 00:40:41] Student added: ID 1
+[2025-12-29 00:40:56] Course added: ha
+[2025-12-29 00:41:00] System Terminated.
+[2025-12-29 00:42:24] System Started.
+[2025-12-29 00:42:38] Department set: g
+[2025-12-29 00:42:49] Student added: ID 1
+[2025-12-29 00:42:59] Course added: g
+[2025-12-29 00:43:08] Grade skipped: 1 - g
+[2025-12-29 00:43:08] System Terminated.
+[2025-12-29 00:45:13] System Started.
+[2025-12-29 00:45:30] Department set: h
+[2025-12-29 00:45:43] Student added: ID 4
+[2025-12-29 00:45:52] Course added: t
+[2025-12-29 00:45:57] System Terminated.
