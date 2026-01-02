@@ -3,19 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * MAIN APPLICATION CLASS
- * Project: Student Grading System
- * Features:
- * - Smart Duplicate Detection (Checks against ALL records)
- * - Session Reporting (Reports ONLY current session entries)
- */
 public class Main {
 
-    // Global list (Old + New) used for Validation to prevent duplicate IDs
+    // Global list  used for Validation to prevent duplicate IDs
     private static final List<Student> allStudents = new ArrayList<>();
 
-    // Session list (Only New) used for Final Reporting
+    // Session list ( used for Final Reporting
     private static final List<Student> currentSessionStudents = new ArrayList<>();
 
     private static final List<Course> courses = new ArrayList<>();
@@ -28,10 +21,7 @@ public class Main {
         printBanner();
         AppLogger.log("System Started.");
 
-        // 3. Persistence: Load previous records ONLY for validation
-        // We add them to 'allStudents' but NOT 'currentSessionStudents'
-       // List<Student> oldRecords = FileManager.loadPreviousData();
-        //allStudents.addAll(oldRecords);
+
 
         try {
             // =============================================================
@@ -45,7 +35,7 @@ public class Main {
                     System.out.println("\n" + Constants.MSG_ENTER_DEPT);
                     System.out.println("(Type 'cancel' at any time to reset this section)");
 
-                    String dName = InputHelper.getSafeText("Department Name:");
+                    String dName = InputHelper.getValidName("Department Name:");
                     String dWeb = InputHelper.getValidWebPage("Web Page:");
                     LocalDate dDate = InputHelper.getDate("Est. Date (dd.MM.yyyy):");
 
@@ -77,18 +67,18 @@ public class Main {
                     System.out.println("\n--- NEW STUDENT ENTRY ---");
                     System.out.println("(Type 'cancel' at any time to reset this section)");
 
-                    String name = InputHelper.getSafeText("First Name ('end' to finish):");
+                    String name = InputHelper.getValidName("First Name ('end' to finish):");
                     if (name.equalsIgnoreCase(Constants.CMD_END)) break;
 
-                    String surname = InputHelper.getSafeText("Last Name:");
+                    String surname = InputHelper.getValidName("Last Name:");
 
-                    // ID Girişi (String olarak güncellendi, Student sınıfına uyumlu)
+
                     String id = InputHelper.getSafeText("Student ID:");
 
-                    // --- SMART DUPLICATE CHECK (Tüm listede ara) ---
+                    // --- SMART DUPLICATE CHECK  ---
                     boolean exists = false;
                     for (Student s : allStudents) {
-                        if (s.getStudentId().equals(id)) { // String karşılaştırma
+                        if (s.getStudentId().equals(id)) {
                             System.out.println(">> WARNING: Student with ID " + id + " already exists!");
                             System.out.println(">> Skipping new entry.");
                             exists = true;
@@ -217,7 +207,7 @@ public class Main {
     private static void finalizeAndReport() {
         System.out.println("\n>> Generating Session Report...");
 
-        // Sadece bu oturumda eklenenleri rapora gönderiyoruz
+        // We only include items added in this session in the report.
         FileManager.printAndSaveReport(currentSessionStudents);
     }
 
@@ -227,3 +217,5 @@ public class Main {
         System.out.println("##################################################");
     }
 }
+
+

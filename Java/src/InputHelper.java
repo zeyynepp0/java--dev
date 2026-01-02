@@ -7,7 +7,7 @@ import java.util.Scanner;
  * INPUT MANAGER & VALIDATOR
  * * Purpose: Handles all user input safely using try-catch blocks.
  * Ensures the program never crashes due to invalid input.
- * Requirement: "Unexpected inputs must be taken into account"[cite: 57].
+ * Requirement: "Unexpected inputs must be taken into account".
  */
 public class InputHelper {
     private static final Scanner scanner = new Scanner(System.in);
@@ -50,22 +50,13 @@ public class InputHelper {
             String input = scanner.nextLine().trim();
             checkCommand(input);
             // Regex: Letters, spaces, dots, hyphens allowed. No numbers.
-            if (input.matches("[a-zA-ZğüşıöçĞÜŞİÖÇ .-]+")) {
+            if (input.matches("[a-zA-ZğüşıöçĞÜŞİÖÇ ]+")) {
                 return input;
             }
             System.out.println(Constants.ERR_INVALID_NAME);
         }
     }
 
-//    public static String getString(String prompt) {
-//        while (true) {
-//            System.out.print(prompt + " ");
-//            String input = scanner.nextLine().trim();
-//            checkCommand(input);
-//            if (!input.isEmpty()) return input;
-//            System.out.println(Constants.ERR_EMPTY);
-//        }
-//    }
 
     public static int getInt(String prompt) {
         while (true) {
@@ -75,7 +66,7 @@ public class InputHelper {
 
             try {
                 int val = Integer.parseInt(input);
-                if (val < 0) { System.out.println(Constants.ERR_NEGATIVE); continue; }
+                if (val <= 0) { System.out.println(Constants.ERR_NEGATIVE); continue; }
                 return val;
             } catch (NumberFormatException e) {
                 System.out.println(Constants.ERR_INVALID_NUMBER);
@@ -83,24 +74,6 @@ public class InputHelper {
         }
     }
 
-    public static long getLong(String prompt) {
-        while (true) {
-            System.out.print(prompt + " ");
-            String input = scanner.nextLine().trim();
-            checkCommand(input);
-            if (input.isEmpty()) {
-                System.out.println(Constants.ERR_EMPTY);
-                continue;
-            }
-            try {
-                long val = Long.parseLong(input);
-                if (val < 0) { System.out.println(Constants.ERR_NEGATIVE); continue; }
-                return val;
-            } catch (NumberFormatException e) {
-                System.out.println(Constants.ERR_INVALID_NUMBER);
-            }
-        }
-    }
 
     public static LocalDate getDate(String prompt) {
         // Çoklu format desteği için dizimiz (İstersen sadece DATE_FMT de kullanabilirsin)
@@ -168,12 +141,8 @@ public class InputHelper {
                 continue;
             }
 
-            // Regex Explanation:
-            // [a-zA-Z0-9] : English letters and numbers
-            // [ğüşıöçĞÜŞİÖÇ] : Turkish letters
-            // [ .] : Space and period (e.g., "M.O.T" or "Physics 1")
-            // + : Must have at least one character
-            if (input.matches("[a-zA-Z0-9ğüşıöçĞÜŞİÖÇ .]+")) {
+
+            if (input.matches("[a-zA-Z0-9ğüşıöçĞÜŞİÖÇ ]+")) {
                 return input;
             }
 
@@ -182,9 +151,8 @@ public class InputHelper {
         }
     }
     /**
-     * [YENİ ÖZELLİK] Web Adresi Format Kontrolü
-     * Kullanıcının geçerli bir URL formatı girmesini zorunlu kılar.
-     * Örn: www.site.com, site.edu.tr
+     * Web Address Format Check
+     * Requires the user to enter a valid URL format. * Example: www.site.com, site.edu.tr
      */
     public static String getValidWebPage(String prompt) {
         while (true) {

@@ -19,7 +19,7 @@ public class Student {
     private LocalDate birthDate;
 
     // Transcript: Maps a Course to a Grade (Double)
-    // Map<Ders, Not> şeklinde tutuyoruz.
+    // We store it in the format Map<Lesson, Grade>.
     private Map<Course, Double> transcript = new HashMap<>();
 
     // --- Constructor ---
@@ -55,6 +55,8 @@ public class Student {
 
     /**
      * Checks if the student has taken a specific course.
+     * @param c the course to check
+     * @return true if the course exists in the transcript
      */
     public boolean hasCourse(Course c) {
         return transcript.containsKey(c);
@@ -75,7 +77,7 @@ public class Student {
             Course c = entry.getKey();
             Double grade = entry.getValue();
 
-            // Güvenlik kontrolü: Dersin ECTS'i var mı?
+
             double ects = c.getEcts();
 
             totalWeightedPoints += (ects * grade);
@@ -90,23 +92,41 @@ public class Student {
 
     // --- Helper Methods ---
 
-    public int getAge() {
-        if (birthDate == null) return 0;
-        return Period.between(birthDate, LocalDate.now()).getYears();
-    }
+    /**
+     * Calculates the student's age.
+     *
+     * @return age in years
+     */
+//    public int getAge() {
+//        if (birthDate == null) return 0;
+//        return Period.between(birthDate, LocalDate.now()).getYears();
+//    }
 
+    /**
+     * Formats birth date as dd.MM.yyyy.
+     *
+     * @return formatted birth date or "N/A"
+     */
     public String getFormattedBirthDate() {
         if (birthDate == null) return "N/A";
         return birthDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
+    /**
+     * @return student's full name
+     */
     public String getFullName() {
         return firstName + " " + lastName;
     }
 
     // --- Getters & Setters ---
 
-    // FileManager veya Main sınıfı "getGpa()" çağırdığında hesaplama çalışsın:
+
+    /**
+     * Returns GPA by triggering dynamic calculation.
+     *
+     * @return current GPA
+     */
     public double getGpa() {
         return calculateGPA();
     }
@@ -123,12 +143,18 @@ public class Student {
     public LocalDate getBirthDate() { return birthDate; }
     public void setBirthDate(LocalDate birthDate) { this.birthDate = birthDate; }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "Name='" + getFullName() + '\'' +
-                ", ID='" + studentId + '\'' +
-                ", GPA=" + String.format("%.2f", calculateGPA()) +
-                '}';
-    }
+
+//    /**
+//     * Returns a readable summary of the student.
+//     *
+//     * @return formatted student information
+//     */
+    //@Override
+//    public String toString() {
+//        return "Student{" +
+//                "Name='" + getFullName() + '\'' +
+//                ", ID='" + studentId + '\'' +
+//                ", GPA=" + String.format("%.2f", calculateGPA()) +
+//                '}';
+//    }
 }

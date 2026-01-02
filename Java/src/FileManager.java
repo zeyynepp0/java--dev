@@ -1,6 +1,5 @@
 import java.io.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime; // Tarih ve Saat için
+import java.time.LocalDateTime; // For Date and Time
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -8,7 +7,7 @@ import java.util.*;
  * FILE MANAGER
  * Purpose: Handles reporting to 'result.txt' with timestamps and append mode.
  *
- * @author Gemini & User
+ * @author Zeynep Can
  */
 public class FileManager {
 
@@ -20,20 +19,19 @@ public class FileManager {
     private static final DateTimeFormatter TIMESTAMP_FMT = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
     /**
-     * Raporu oluşturur, konsola basar ve 'result.txt' dosyasının SONUNA ekler.
-     *
-     * @param sessionStudents Sadece bu oturumda eklenen yeni öğrenci listesi.
+     * Generates the report, prints it to the console, and appends it to the END of the 'result.txt' file. *
+     * @param sessionStudents Only the list of new students added in this session.
      */
     public static void printAndSaveReport(List<Student> sessionStudents) {
         if (sessionStudents.isEmpty()) {
-            System.out.println(">> Raporlanacak yeni veri yok.");
+            System.out.println(">> There is no new data to report.");
             return;
         }
 
-        // 1. SIRALAMA (GPA Yüksekten Düşüğe)
+        // 1. RANKING (GPA High to Low)
         sessionStudents.sort(Comparator.comparingDouble(Student::calculateGPA).reversed());
 
-        // 2. İSTATİSTİK HESAPLAMA
+        // 2. STATISTICAL CALCULATION
         double totalGpa = 0;
         double maxGpa = Double.MIN_VALUE;
         double minGpa = Double.MAX_VALUE;
@@ -55,12 +53,12 @@ public class FileManager {
         }
         double avg = totalGpa / sessionStudents.size();
 
-        // 3. RAPOR METNİNİ OLUŞTURMA
+        // 3. Creating the report text
         StringBuilder sb = new StringBuilder();
 
-        // --- YENİ: TARİH VE SAAT BAŞLIĞI ---
+        // ---  DATE AND TIME HEADING ---
         sb.append("\n******************************************\n");
-        sb.append("   RAPOR TARİHİ: ").append(LocalDateTime.now().format(TIMESTAMP_FMT)).append("\n");
+        sb.append("   REPORT DATE: ").append(LocalDateTime.now().format(TIMESTAMP_FMT)).append("\n");
         sb.append("******************************************\n");
 
         sb.append("==========================================\n");
@@ -75,7 +73,7 @@ public class FileManager {
         sb.append("\n=== GPA DISTRIBUTION (HISTOGRAM) ===\n");
         sb.append("4.00 [High] : ").append(countHigh).append("\n");
         sb.append("3.xx [Good] : ").append(countGood).append("\n");
-        sb.append("Mid Range   : ").append(countMid).append("\n");
+        sb.append("Mid-Range   : ").append(countMid).append("\n");
         sb.append("0.00 [Fail] : ").append(countFail).append("\n");
 
         sb.append("\n==========================================\n");
@@ -92,60 +90,22 @@ public class FileManager {
                     s.calculateGPA()));
         }
         sb.append("==========================================\n");
-        sb.append("------------------------------------------\n"); // Raporlar arası ayırıcı çizgi
+        sb.append("------------------------------------------\n");
 
-        // 4. KONSOLA YAZDIR
+        // 4. PRINT TO CONSOLE
         System.out.println(sb.toString());
 
-        // 5. DOSYAYA EKLE (APPEND MODE)
-        // 'true' parametresi vererek dosyanın sonuna ekleme yapıyoruz (Silme yok)
+        // 5. APPEND MODE
+        // We are appending to the end of the file by providing the 'true' parameter (No deletion)
         try (PrintWriter writer = new PrintWriter(new FileWriter(RESULT_FILE, true))) {
             writer.print(sb.toString());
-            System.out.println(">> Rapor başarıyla '" + RESULT_FILE + "' dosyasına EKLENDİ.");
+            System.out.println(">> The report has been successfully ADDED to the '" + RESULT_FILE + "' file.");
         } catch (IOException e) {
-            System.err.println(">> Dosya kaydetme hatası: " + e.getMessage());
+            System.err.println(">>File saving error: " + e.getMessage());
         }
 
-        // Veritabanı güncellemesi
-        //appendToDatabase(sessionStudents);
+
     }
 
-    // --- DİĞER METOTLAR (Değişiklik yok) ---
 
-//    public static List<Student> loadPreviousData() {
-//        List<Student> loadedStudents = new ArrayList<>();
-//       // File file = new File(DB_FILE);
-//
-//        if (!file.exists()) return loadedStudents;
-//
-//        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                String[] parts = line.split(",");
-//                if (parts.length >= 4) {
-//                    try {
-//                        String name = parts[0].trim();
-//                        String surname = parts[1].trim();
-//                        String id = parts[2].trim();
-//                        LocalDate birthDate = LocalDate.parse(parts[3].trim(), DATE_FMT);
-//                        loadedStudents.add(new Student(name, surname, id, birthDate));
-//                    } catch (Exception e) { }
-//                }
-//            }
-//        } catch (IOException e) {
-//            System.err.println(">> Veri yükleme hatası: " + e.getMessage());
-//        }
-//        return loadedStudents;
-//    }
-
-//    private static void appendToDatabase(List<Student> students) {
-//        try (PrintWriter writer = new PrintWriter(new FileWriter(DB_FILE, true))) {
-//            for (Student s : students) {
-//                writer.println(s.getFirstName() + "," +
-//                        s.getLastName() + "," +
-//                        s.getStudentId() + "," +
-//                        s.getFormattedBirthDate());
-//            }
-//        } catch (IOException e) { }
-//    }
 }
