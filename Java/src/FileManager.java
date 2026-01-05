@@ -12,10 +12,10 @@ import java.util.*;
 public class FileManager {
 
     private static final String RESULT_FILE = "result.txt";
-    //private static final String DB_FILE = "students_db.txt";
+
 
     private static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-    // Rapor başlığı için detaylı tarih-saat formatı
+
     private static final DateTimeFormatter TIMESTAMP_FMT = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
     /**

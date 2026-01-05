@@ -183,7 +183,7 @@ public class InputHelper {
         }
     }
     /**
-     * Converts Letter Grade to Numerical Value [cite: 32-39].
+     * Converts Letter Grade to Numerical Value
      */
     public static double getGrade(String courseName) {
         while (true) {
